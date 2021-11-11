@@ -34,144 +34,145 @@ import UIKit
 /// actions on whatever text entry you want to use it with. It does not assume
 /// any type e.g. UITextField vs UITextView.
 protocol MorseKeyboardViewDelegate: class {
-  func insertCharacter(_ newCharacter: String)
-  func deleteCharacterBeforeCursor()
-  func characterBeforeCursor() -> String?
+    func insertCharacter(_ newCharacter: String)
+    func deleteCharacterBeforeCursor()
+    func characterBeforeCursor() -> String?
 }
 
 /// Contains all of the logic for handling button taps and translating that into
 /// specific actions on the text entry associated with it
 class MorseKeyboardView: UIView {
-  @IBOutlet var previewLabel: UILabel!
-  @IBOutlet var nextKeyboardButton: UIButton!
-  @IBOutlet var deleteButton: UIButton!
-  @IBOutlet var spaceButtonToParentConstraint: NSLayoutConstraint!
-  @IBOutlet var spaceButtonToNextKeyboardConstraint: NSLayoutConstraint!
-
-  weak var delegate: MorseKeyboardViewDelegate?
-
-  /// Cache of signal inputs
-  var signalCache: [MorseData.Signal] = [] {
-    didSet {
-      var text = ""
-      if signalCache.count > 0 {
-        text = signalCache.reduce("") {
-          return $0 + $1.rawValue
+    @IBOutlet var previewLabel: UILabel!
+    @IBOutlet var swiftuiContainer: UIView!
+    @IBOutlet var nextKeyboardButton: UIButton!
+    @IBOutlet var deleteButton: UIButton!
+    @IBOutlet var spaceButtonToParentConstraint: NSLayoutConstraint!
+    @IBOutlet var spaceButtonToNextKeyboardConstraint: NSLayoutConstraint!
+    
+    weak var delegate: MorseKeyboardViewDelegate?
+    
+    /// Cache of signal inputs
+    var signalCache: [MorseData.Signal] = [] {
+        didSet {
+            var text = ""
+            if signalCache.count > 0 {
+                text = signalCache.reduce("") {
+                    return $0 + $1.rawValue
+                }
+                text += " = \(cacheLetter)"
+            }
+            previewLabel.text = text
         }
-        text += " = \(cacheLetter)"
-      }
-      previewLabel.text = text
     }
-  }
-
-  /// The letter represented by the current signalCache
-  var cacheLetter: String {
-    return MorseData.letter(fromSignals: signalCache) ?? "?"
-  }
-
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    setColorScheme(.light)
-    setNextKeyboardVisible(false)
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-  }
-
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    setColorScheme(.light)
-    setNextKeyboardVisible(false)
-  }
-
-  func setNextKeyboardVisible(_ visible: Bool) {
-    spaceButtonToNextKeyboardConstraint.isActive = visible
-    spaceButtonToParentConstraint.isActive = !visible
-    nextKeyboardButton.isHidden = !visible
-  }
-
-  func setColorScheme(_ colorScheme: MorseColorScheme) {
-    let colorScheme = MorseColors(colorScheme: colorScheme)
-    previewLabel.backgroundColor = colorScheme.previewBackgroundColor
-    previewLabel.textColor = colorScheme.previewTextColor
-    backgroundColor = colorScheme.backgroundColor
-
-    for view in subviews {
-      if let button = view as? KeyboardButton {
-        button.setTitleColor(colorScheme.buttonTextColor, for: [])
-        button.tintColor = colorScheme.buttonTextColor
-
-        if button == nextKeyboardButton || button == deleteButton {
-          button.defaultBackgroundColor = colorScheme.buttonHighlightColor
-          button.highlightBackgroundColor = colorScheme.buttonBackgroundColor
-        } else {
-          button.defaultBackgroundColor = colorScheme.buttonBackgroundColor
-          button.highlightBackgroundColor = colorScheme.buttonHighlightColor
+    
+    /// The letter represented by the current signalCache
+    var cacheLetter: String {
+        return MorseData.letter(fromSignals: signalCache) ?? "?"
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setColorScheme(.light)
+        setNextKeyboardVisible(false)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setColorScheme(.light)
+        setNextKeyboardVisible(false)
+    }
+    
+    func setNextKeyboardVisible(_ visible: Bool) {
+        spaceButtonToNextKeyboardConstraint.isActive = visible
+        spaceButtonToParentConstraint.isActive = !visible
+        nextKeyboardButton.isHidden = !visible
+    }
+    
+    func setColorScheme(_ colorScheme: MorseColorScheme) {
+        let colorScheme = MorseColors(colorScheme: colorScheme)
+        previewLabel.backgroundColor = colorScheme.previewBackgroundColor
+        previewLabel.textColor = colorScheme.previewTextColor
+        backgroundColor = colorScheme.backgroundColor
+        
+        for view in subviews {
+            if let button = view as? KeyboardButton {
+                button.setTitleColor(colorScheme.buttonTextColor, for: [])
+                button.tintColor = colorScheme.buttonTextColor
+                
+                if button == nextKeyboardButton || button == deleteButton {
+                    button.defaultBackgroundColor = colorScheme.buttonHighlightColor
+                    button.highlightBackgroundColor = colorScheme.buttonBackgroundColor
+                } else {
+                    button.defaultBackgroundColor = colorScheme.buttonBackgroundColor
+                    button.highlightBackgroundColor = colorScheme.buttonHighlightColor
+                }
+            }
         }
-      }
     }
-  }
 }
 
 // MARK: - Actions
 extension MorseKeyboardView {
-  @IBAction func dotPressed(button: UIButton) {
-    addSignal(.dot)
-  }
-
-  @IBAction func dashPressed() {
-    addSignal(.dash)
-  }
-
-  @IBAction func deletePressed() {
-      
-    if signalCache.count > 0 {
-      // Remove last signal
-      signalCache.removeLast()
-    } else {
-      // Already didn't have a signal
-      if let previousCharacter = delegate?.characterBeforeCursor() {
-        if let previousSignals = MorseData.code["\(previousCharacter)"] {
-          signalCache = previousSignals
+    @IBAction func dotPressed(button: UIButton) {
+        addSignal(.dot)
+    }
+    
+    @IBAction func dashPressed() {
+        addSignal(.dash)
+    }
+    
+    @IBAction func deletePressed() {
+        
+        if signalCache.count > 0 {
+            // Remove last signal
+            signalCache.removeLast()
+        } else {
+            // Already didn't have a signal
+            if let previousCharacter = delegate?.characterBeforeCursor() {
+                if let previousSignals = MorseData.code["\(previousCharacter)"] {
+                    signalCache = previousSignals
+                }
+            }
         }
-      }
+        
+        if signalCache.count == 0 {
+            // Delete because no more signal
+            print("delte press")
+            delegate?.deleteCharacterBeforeCursor()
+        } else {
+            print("insertCharacter press")
+            // Building on existing letter by deleting current
+            delegate?.deleteCharacterBeforeCursor()
+            delegate?.insertCharacter(cacheLetter)
+        }
     }
-
-    if signalCache.count == 0 {
-      // Delete because no more signal
-        print("delte press")
-      delegate?.deleteCharacterBeforeCursor()
-    } else {
-        print("insertCharacter press")
-      // Building on existing letter by deleting current
-      delegate?.deleteCharacterBeforeCursor()
-      delegate?.insertCharacter(cacheLetter)
+    
+    @IBAction func spacePressed() {
+        if signalCache.count > 0 {
+            // Clear our the signal cache
+            signalCache = []
+        } else {
+            delegate?.insertCharacter(" ")
+        }
     }
-  }
-
-  @IBAction func spacePressed() {
-    if signalCache.count > 0 {
-      // Clear our the signal cache
-      signalCache = []
-    } else {
-      delegate?.insertCharacter(" ")
-    }
-  }
 }
 
 // MARK: - Private Methods
 private extension MorseKeyboardView {
-  func addSignal(_ signal: MorseData.Signal) {
-    if signalCache.count == 0 {
-      // Have an empty cache
-      signalCache.append(signal)
-      delegate?.insertCharacter(cacheLetter)
-    } else {
-      // Building on existing letter
-      signalCache.append(signal)
-      delegate?.deleteCharacterBeforeCursor()
-      delegate?.insertCharacter(cacheLetter)
+    func addSignal(_ signal: MorseData.Signal) {
+        if signalCache.count == 0 {
+            // Have an empty cache
+            signalCache.append(signal)
+            delegate?.insertCharacter(cacheLetter)
+        } else {
+            // Building on existing letter
+            signalCache.append(signal)
+            delegate?.deleteCharacterBeforeCursor()
+            delegate?.insertCharacter(cacheLetter)
+        }
     }
-  }
 }

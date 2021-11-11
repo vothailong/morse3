@@ -28,10 +28,14 @@
 		9044AE2248FBA21A26FDA682 /* libPods-MorseKeyboard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2524BCD81F7E9979FB78EA /* libPods-MorseKeyboard.a */; };
 		B046C9C7273BA32D001D579F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046C9C6273BA32D001D579F /* CategoryViewController.swift */; };
 		B046C9C8273BA32D001D579F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046C9C6273BA32D001D579F /* CategoryViewController.swift */; };
+		B094FDCE273CC42100BA8AEF /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094FDCD273CC42100BA8AEF /* File.swift */; };
+		B094FDD0273CC60E00BA8AEF /* KeyBoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094FDCF273CC60E00BA8AEF /* KeyBoardListView.swift */; };
 		B0DA2F94273B748E00745020 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA2F93273B748E00745020 /* Item.swift */; };
 		B0DA2F95273B748E00745020 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA2F93273B748E00745020 /* Item.swift */; };
 		B0DA2F99273B78CB00745020 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA2F98273B78CB00745020 /* Category.swift */; };
 		B0DA2F9A273B78CB00745020 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA2F98273B78CB00745020 /* Category.swift */; };
+		B0EA09FA273CD28200296123 /* UIViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EA09F9273CD28200296123 /* UIViewEx.swift */; };
+		B0EA09FB273CD28200296123 /* UIViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EA09F9273CD28200296123 /* UIViewEx.swift */; };
 		C10FB0DC5B6DD86AE4DC5F52 /* libPods-MorseCoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E56BA24C34642C320A43F3 /* libPods-MorseCoder.a */; };
 /* End PBXBuildFile section */
 
@@ -79,8 +83,11 @@
 		466734AC513E0CDEF33BF03E /* Pods-MorseKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseKeyboard.release.xcconfig"; path = "Target Support Files/Pods-MorseKeyboard/Pods-MorseKeyboard.release.xcconfig"; sourceTree = "<group>"; };
 		58B2216BE5723E888D620230 /* Pods-MorseCoder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseCoder.debug.xcconfig"; path = "Target Support Files/Pods-MorseCoder/Pods-MorseCoder.debug.xcconfig"; sourceTree = "<group>"; };
 		B046C9C6273BA32D001D579F /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		B094FDCD273CC42100BA8AEF /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		B094FDCF273CC60E00BA8AEF /* KeyBoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardListView.swift; sourceTree = "<group>"; };
 		B0DA2F93273B748E00745020 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B0DA2F98273B78CB00745020 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		B0EA09F9273CD28200296123 /* UIViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewEx.swift; sourceTree = "<group>"; };
 		B3E5EFCC3B21EBA3939AEC30 /* Pods-MorseKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseKeyboard.debug.xcconfig"; path = "Target Support Files/Pods-MorseKeyboard/Pods-MorseKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		C30A575AFE9B26EADA84B659 /* Pods-MorseCoder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseCoder.release.xcconfig"; path = "Target Support Files/Pods-MorseCoder/Pods-MorseCoder.release.xcconfig"; sourceTree = "<group>"; };
 		EF2524BCD81F7E9979FB78EA /* libPods-MorseKeyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MorseKeyboard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +116,7 @@
 		040C68F7202698E3005F729B /* MorseKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				B094FDCF273CC60E00BA8AEF /* KeyBoardListView.swift */,
 				040C68F8202698E3005F729B /* KeyboardViewController.swift */,
 				040C68FA202698E3005F729B /* Info.plist */,
 			);
@@ -139,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				04512C40201545290022BDCD /* AppDelegate.swift */,
+				B0EA09F9273CD28200296123 /* UIViewEx.swift */,
 				04512C42201545290022BDCD /* PracticeViewController.swift */,
 				04512C44201545290022BDCD /* Main.storyboard */,
 				04512C632015530F0022BDCD /* Data */,
@@ -157,6 +166,7 @@
 				04512C5D201553090022BDCD /* KeyboardButton.swift */,
 				04512C5E201553090022BDCD /* MorseKeyboardView.swift */,
 				04512C5F201553090022BDCD /* MorseKeyboardView.xib */,
+				B094FDCD273CC42100BA8AEF /* File.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -347,13 +357,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0EA09FB273CD28200296123 /* UIViewEx.swift in Sources */,
 				040C690520269B2E005F729B /* MorseKeyboardView.swift in Sources */,
 				040C690420269B2E005F729B /* KeyboardButton.swift in Sources */,
 				040C690220269B2E005F729B /* MorseColors.swift in Sources */,
 				040C68F9202698E3005F729B /* KeyboardViewController.swift in Sources */,
+				B094FDD0273CC60E00BA8AEF /* KeyBoardListView.swift in Sources */,
 				B046C9C8273BA32D001D579F /* CategoryViewController.swift in Sources */,
 				B0DA2F95273B748E00745020 /* Item.swift in Sources */,
 				040C690320269B2E005F729B /* MorseData.swift in Sources */,
+				B094FDCE273CC42100BA8AEF /* File.swift in Sources */,
 				B0DA2F9A273B78CB00745020 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0EA09FA273CD28200296123 /* UIViewEx.swift in Sources */,
 				04512C672015530F0022BDCD /* MorseData.swift in Sources */,
 				04512C60201553090022BDCD /* KeyboardButton.swift in Sources */,
 				04512C61201553090022BDCD /* MorseKeyboardView.swift in Sources */,
@@ -403,6 +417,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 48Z4QVLCS5;
 				INFOPLIST_FILE = MorseKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.MorseCoder.MorseKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -419,6 +434,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 48Z4QVLCS5;
 				INFOPLIST_FILE = MorseKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.MorseCoder.MorseKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -548,6 +564,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 48Z4QVLCS5;
 				INFOPLIST_FILE = MorseCoder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.MorseCoder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -565,6 +582,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 48Z4QVLCS5;
 				INFOPLIST_FILE = MorseCoder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.MorseCoder;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -58,7 +58,8 @@ class KeyboardViewController: UIInputViewController {
       
       
 //      self.fullCellSwiftUIView = ChallengeDetailCellSwiftUIView()
-      let hostingVC = UIHostingController(rootView: KeyBoardListView())
+      let controller = CategoryViewController ()
+      let hostingVC = UIHostingController(rootView: KeyBoardListView(controller: controller))
       self.morseKeyboardView.swiftuiContainer.addSubview(hostingVC.view)
       hostingVC.view.pinEdges(to: self.morseKeyboardView.swiftuiContainer)
     //  hostingVC.view.backgroundColor = .yellow// .clear

@@ -14,14 +14,26 @@ class CategoryViewController {
     var realm: Realm!
     
     init (){
-        print(Realm.Configuration.defaultConfiguration.fileURL)
+//        print("path realm====== \(String(describing: Realm.Configuration.defaultConfiguration.fileURL))")
+
         //init Realm
-        if realm == nil {
-            do {
-                realm = try Realm()
-            } catch {
-                Log.error("Error initialising new realm, \(error)")
-            }
+//        if realm == nil {
+//            do {
+//                realm = try Realm()
+//            } catch {
+//                Log.error("Error initialising new realm, \(error)")
+//            }
+//        }
+        let fileURL = FileManager.default
+            .containerURL(forSecurityApplicationGroupIdentifier: "group.screencastomatic.com")!
+            .appendingPathComponent("default.realm")
+        print("path realm====== \(String(describing: fileURL))")
+        let config = Realm.Configuration(fileURL: fileURL)
+        do {
+    //        realm = try! Realm(configuration: config)
+            realm = try Realm(configuration: config)
+        } catch {
+            Log.error("Error initialising new realm, \(error)")
         }
     }
     // Potential namespace clash with OpaquePointer (same name of Category)

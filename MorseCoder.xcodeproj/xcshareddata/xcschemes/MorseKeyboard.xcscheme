@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "040C68F5202698E3005F729B"
-               BuildableName = "MorseKeyboard.appex"
-               BlueprintName = "MorseKeyboard"
+               BuildableName = "CLipKeyKeyboard.appex"
+               BlueprintName = "CLipKeyKeyboard"
                ReferencedContainer = "container:MorseCoder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,8 +30,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "04512C3C201545290022BDCD"
-               BuildableName = "MorseCoder.app"
-               BlueprintName = "MorseCoder"
+               BuildableName = "ClipKey.app"
+               BlueprintName = "ClipKey"
                ReferencedContainer = "container:MorseCoder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,25 +42,24 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "040C68F5202698E3005F729B"
-            BuildableName = "MorseKeyboard.appex"
-            BlueprintName = "MorseKeyboard"
+            BuildableName = "CLipKeyKeyboard.appex"
+            BlueprintName = "CLipKeyKeyboard"
             ReferencedContainer = "container:MorseCoder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
+      askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
@@ -69,20 +68,18 @@
       launchAutomaticallySubstyle = "2">
       <RemoteRunnable
          runnableDebuggingMode = "1"
-         BundleIdentifier = "com.apple.mobilesafari"
-         RemotePath = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/Applications/MobileSafari.app">
+         BundleIdentifier = "com.apple.mobilenotes"
+         RemotePath = "/var/containers/Bundle/Application/A9EA8C62-F6EC-4B52-98E7-9A55CEC40F8E/MobileNotes.app">
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04512C3C201545290022BDCD"
-            BuildableName = "MorseCoder.app"
-            BlueprintName = "MorseCoder"
+            BuildableName = "ClipKey.app"
+            BlueprintName = "ClipKey"
             ReferencedContainer = "container:MorseCoder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -90,14 +87,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
+      askForAppToLaunch = "Yes"
       launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04512C3C201545290022BDCD"
-            BuildableName = "MorseCoder.app"
-            BlueprintName = "MorseCoder"
+            BuildableName = "ClipKey.app"
+            BlueprintName = "ClipKey"
             ReferencedContainer = "container:MorseCoder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

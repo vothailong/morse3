@@ -39,10 +39,10 @@ struct KeyBoardListView: View {
     @State var lastpasteboardString: String?
     var clipItems: Results<Item>?
     var selectedCategory: Category?
-    let controller = CategoryViewController()
+    @State var controller : CategoryViewController
     //    let realm: Realm?
-    init() {
-        
+    init(controller: CategoryViewController) {
+        self.controller = controller
         
         if let cats = controller.loadCategories(){
             selectedCategory = cats.first
@@ -67,7 +67,7 @@ struct KeyBoardListView: View {
                 }
             } else {
                 List {
-                    Text("no item")
+                    Text("no item yet")
                 }
             }
         }

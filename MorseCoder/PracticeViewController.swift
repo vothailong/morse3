@@ -38,18 +38,20 @@ class PracticeViewController: UIViewController {
     
     var morseKeyboardView: MorseKeyboardView!
     
+    var realm: Realm!
     var lastpasteboardString: String?
     var toDoItems: Results<Item>?
     var selectedCategory: Category?
-    let realm = try! Realm()
+    //  let realm = try! Realm()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Add an observer so that we can adjust the UI when the keyboard is showing
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(clipboardChanged),
-//                                               name: NSNotification.Name.UIPasteboardChanged , object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(clipboardChanged),
+        //                                               name: NSNotification.Name.UIPasteboardChanged , object: nil)
         // Add an observer to know when app comes to foreground to update UI
         NotificationCenter.default.addObserver(self, selector: #selector(reloadViews), name: .UIApplicationWillEnterForeground, object: nil)
         
@@ -67,10 +69,26 @@ class PracticeViewController: UIViewController {
         // Add KVO for textfield to determine when cursor moves
         textField.addObserver(self, forKeyPath: "selectedTextRange", options: .new, context: nil)
         
+        let fileURL = FileManager.default
+            .containerURL(forSecurityApplicationGroupIdentifier: "group.screencastomatic.com")!
+            .appendingPathComponent("default.realm")
+        print("path realm====== \(String(describing: fileURL))")
+        let config = Realm.Configuration(fileURL: fileURL)
+        do {
+            realm = try Realm(configuration: config)
+        } catch {
+            Log.error("Error initialising new realm, \(error)")
+        }
+        
         morseKeyboardView.setNextKeyboardVisible(false)
         
-        selectedCategory = CategoryViewController().loadCategories()?.first
-       
+        let controller = CategoryViewController()
+        selectedCategory = controller.loadCategories()?.first
+        if selectedCategory == nil {
+            controller.createDefaultCategory()
+            selectedCategory = controller.loadCategories()?.first
+        }
+        
         toDoItems = selectedCategory?.items.sorted(byKeyPath: "dateCreated", ascending: false)
     }
     
@@ -85,25 +103,18 @@ class PracticeViewController: UIViewController {
         for (index, element) in toDoItems.enumerated() {
             print(  "\(index+1)=====\(element.content)")
         }
- //        tableView.reloadData()
+        //        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         if let previousSignals = MorseData.code["a"] {
-           // print("ksdj")
+        if let previousSignals = MorseData.code["a"] {
+            // print("ksdj")
         }
         
-       
+        
         reloadViews()
     }
-//    @objc  func clipboardChanged(){
-//        let pasteboardString: String? = UIPasteboard.general.string
-//        if let theString = pasteboardString {
-//            print("String is \(theString)")
-//            // Put the string into your search bar and do the search
-//        }
-//    }
     deinit {
         NotificationCenter.default.removeObserver(self)
         textField.removeObserver(self, forKeyPath: "selectedTextRange")
@@ -114,15 +125,15 @@ class PracticeViewController: UIViewController {
 extension PracticeViewController {
     @objc func reloadViews() {
         
-          
+        
         // Start the app with the keyboard showing
         textField.becomeFirstResponder()
-       
+        
         addClipboardItemToDB()
         loadItems()
         
         
-         
+        
     }
     
     func addClipboardItemToDB() {
@@ -131,7 +142,7 @@ extension PracticeViewController {
         lastpasteboardString = toDoItems?.first?.content
         
         if  theString == lastpasteboardString {
-                print(lastpasteboardString != nil ? "duplicated value:\(theString)" : "no value to show")
+            print(lastpasteboardString != nil ? "duplicated value:\(theString)" : "no value to show")
         }
         else   {
             lastpasteboardString = theString

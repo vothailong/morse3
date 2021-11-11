@@ -27,19 +27,49 @@
 /// THE SOFTWARE.
 
 import SwiftUI
+import RealmSwift
+
+struct ListItem: Identifiable {
+    let id = UUID()
+    let name: String
+}
 
 struct KeyBoardListView: View {
+    
+    var lastpasteboardString: String?
+    var clipItems: Results<Item>
+    var selectedCategory: Category!
+    let realm = try! Realm()
+    init() {
+        let cats = CategoryViewController().loadCategories()
+        selectedCategory = cats.first
+
+        clipItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: false)
+    }
     var body: some View {
-        List {
-               Text("Hello World")
-               Text("Hello World")
-               Text("Hello World")
-           }
+        List(clipItems) { item in
+            Text(item.content)
+        }.onAppear {
+            loadItems()
+        }
+    }
+    func loadItems() {
+        //toDoItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: true)
+//        guard let toDoItems = toDoItems else {
+//            return
+//        }
+
+        print(  "==============\nNEXT")
+        for (index, element) in clipItems.enumerated() {
+            print(  "\(index+1)=====\(element.content)")
+        }
+ //        tableView.reloadData()
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        KeyBoardListView()
-    }
-}
+//struct SwiftUIView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        KeyBoardListView()
+//    }
+//}
+//

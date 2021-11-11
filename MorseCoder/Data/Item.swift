@@ -9,7 +9,8 @@
 import Foundation
 import RealmSwift
 
-class Item: Object {
+class Item: Object, Identifiable {
+    let id = UUID()
     @objc dynamic var content: String = ""
     @objc dynamic var pin: Bool = false
     @objc dynamic var dateCreated: Date?

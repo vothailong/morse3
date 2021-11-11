@@ -11,18 +11,26 @@ import RealmSwift
 
 class CategoryViewController {
     
-    let realm = try! Realm()
+    var realm: Realm!
     
+    init (){
+        //init Realm
+        if realm == nil {
+            do {
+                realm = try Realm()
+            } catch {
+                print("Error initialising new realm, \(error)")
+            }
+        }
+    }
     // Potential namespace clash with OpaquePointer (same name of Category)
     // Use correct type from dropdown or add backticks to fix e.g., var categories = [`Category`]()
-    var categories: Results<Category>?
+    var categories: Results<Category>!
     func createDefaultCategory(){
         let newCategory = Category()
         newCategory.name = "default"// textField.text!
-        //        newCategory.colour = UIColor.randomFlat().hexValue()
         self.save(category: newCategory)
     }
-    //Mark: - Data Manipulation Methods
     func save(category: Category) {
         do {
             try realm.write {
@@ -31,14 +39,21 @@ class CategoryViewController {
         } catch {
             print("Error saving category \(error)")
         }
-        //tableView.reloadData()
     }
     
-    func loadCategories() -> Results<Category>?{
+    func loadCategories() -> Results<Category> {
         
-        categories = realm.objects(Category.self)
+        categories = realm.objects(Category.self)//lần đầu tiên tại sao ko = nil?
+        if categories == nil {
+            createDefaultCategory()
+            categories = realm.objects(Category.self)
+        }
         return categories
         // tableView.reloadData()
+    }
+    
+    func getDefaultCategory () -> Category? {
+        return loadCategories().first
     }
     //    override func viewDidLoad() {
     //        super.viewDidLoad()
@@ -71,7 +86,7 @@ class CategoryViewController {
     //        return cell
     //    }
     
-  
+    
     
     //Mark: - Delete Data from Swipe
     //    override func updateModel(at indexPath: IndexPath) {

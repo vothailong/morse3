@@ -56,7 +56,7 @@ class PracticeViewController: UIViewController {
         // Set keyboard view to input view of text field
         let nib = UINib(nibName: "MorseKeyboardView", bundle: nil)
         let objects = nib.instantiate(withOwner: nil, options: nil)
-        morseKeyboardView = objects.first as! MorseKeyboardView
+        morseKeyboardView = (objects.first as! MorseKeyboardView)
         morseKeyboardView.delegate = self
         
         // Add the keyboard to a container view so that it's sized correctly
@@ -69,7 +69,7 @@ class PracticeViewController: UIViewController {
         
         morseKeyboardView.setNextKeyboardVisible(false)
         
-        selectedCategory = CategoryViewController().loadCategories()!.first!
+        selectedCategory = CategoryViewController().loadCategories().first!
        
         toDoItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: false)
     }

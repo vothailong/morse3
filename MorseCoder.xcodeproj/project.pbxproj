@@ -29,7 +29,7 @@
 		B046C9C7273BA32D001D579F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046C9C6273BA32D001D579F /* CategoryViewController.swift */; };
 		B046C9C8273BA32D001D579F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046C9C6273BA32D001D579F /* CategoryViewController.swift */; };
 		B094FDCE273CC42100BA8AEF /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094FDCD273CC42100BA8AEF /* File.swift */; };
-		B094FDD0273CC60E00BA8AEF /* KeyBoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094FDCF273CC60E00BA8AEF /* KeyBoardListView.swift */; };
+		B094FDD0273CC60E00BA8AEF /* KeyBoardListSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094FDCF273CC60E00BA8AEF /* KeyBoardListSwiftUIView.swift */; };
 		B0DA2F94273B748E00745020 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA2F93273B748E00745020 /* Item.swift */; };
 		B0DA2F95273B748E00745020 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA2F93273B748E00745020 /* Item.swift */; };
 		B0DA2F99273B78CB00745020 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA2F98273B78CB00745020 /* Category.swift */; };
@@ -84,7 +84,7 @@
 		58B2216BE5723E888D620230 /* Pods-MorseCoder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseCoder.debug.xcconfig"; path = "Target Support Files/Pods-MorseCoder/Pods-MorseCoder.debug.xcconfig"; sourceTree = "<group>"; };
 		B046C9C6273BA32D001D579F /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		B094FDCD273CC42100BA8AEF /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		B094FDCF273CC60E00BA8AEF /* KeyBoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardListView.swift; sourceTree = "<group>"; };
+		B094FDCF273CC60E00BA8AEF /* KeyBoardListSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardListSwiftUIView.swift; sourceTree = "<group>"; };
 		B0DA2F93273B748E00745020 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B0DA2F98273B78CB00745020 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B0EA09F9273CD28200296123 /* UIViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewEx.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 		040C68F7202698E3005F729B /* MorseKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B094FDCF273CC60E00BA8AEF /* KeyBoardListView.swift */,
+				B094FDCF273CC60E00BA8AEF /* KeyBoardListSwiftUIView.swift */,
 				040C68F8202698E3005F729B /* KeyboardViewController.swift */,
 				040C68FA202698E3005F729B /* Info.plist */,
 			);
@@ -362,7 +362,7 @@
 				040C690420269B2E005F729B /* KeyboardButton.swift in Sources */,
 				040C690220269B2E005F729B /* MorseColors.swift in Sources */,
 				040C68F9202698E3005F729B /* KeyboardViewController.swift in Sources */,
-				B094FDD0273CC60E00BA8AEF /* KeyBoardListView.swift in Sources */,
+				B094FDD0273CC60E00BA8AEF /* KeyBoardListSwiftUIView.swift in Sources */,
 				B046C9C8273BA32D001D579F /* CategoryViewController.swift in Sources */,
 				B0DA2F95273B748E00745020 /* Item.swift in Sources */,
 				040C690320269B2E005F729B /* MorseData.swift in Sources */,

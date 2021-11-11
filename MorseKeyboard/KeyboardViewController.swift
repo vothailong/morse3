@@ -61,7 +61,7 @@ class KeyboardViewController: UIInputViewController {
       let hostingVC = UIHostingController(rootView: KeyBoardListView())
       self.morseKeyboardView.swiftuiContainer.addSubview(hostingVC.view)
       hostingVC.view.pinEdges(to: self.morseKeyboardView.swiftuiContainer)
-      hostingVC.view.backgroundColor = .yellow// .clear
+    //  hostingVC.view.backgroundColor = .yellow// .clear
       
       
   }

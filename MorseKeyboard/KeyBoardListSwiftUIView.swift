@@ -36,34 +36,75 @@ struct ListItem: Identifiable {
 
 struct KeyBoardListView: View {
     
-    var lastpasteboardString: String?
-    var clipItems: Results<Item>
-    var selectedCategory: Category!
-    let realm = try! Realm()
+    @State var lastpasteboardString: String?
+    var clipItems: Results<Item>?
+    var selectedCategory: Category?
+    let controller = CategoryViewController()
+    //    let realm: Realm?
     init() {
-        let cats = CategoryViewController().loadCategories()
-        selectedCategory = cats.first
-
-        clipItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: false)
+        
+        
+        if let cats = controller.loadCategories(){
+            selectedCategory = cats.first
+            if let selectedCategory = selectedCategory, selectedCategory.items.count > 0 {
+                clipItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: false)
+            }
+        } else {
+            controller.createDefaultCategory()
+        }
+        
+        
+        
     }
     var body: some View {
-        List(clipItems) { item in
-            Text(item.content)
-        }.onAppear {
-            loadItems()
+        
+        VStack {
+            if clipItems?.count ?? 0 > 0 {
+                List(clipItems!) { item in
+                    Text(item.content)
+                }.onAppear {
+                    addClipboardItemToDB()
+                }
+            } else {
+                List {
+                    Text("no item")
+                }
+            }
         }
     }
+    
+    func addClipboardItemToDB() {
+        let pasteboardString: String? = UIPasteboard.general.string
+        guard let   theString = pasteboardString, let selectedCategory = selectedCategory else { return  }
+        lastpasteboardString = clipItems?.first?.content
+        
+        if  theString == lastpasteboardString {
+            print(lastpasteboardString != nil ? "duplicated value:\(theString)" : "no value to show")
+        }
+        else   {
+            lastpasteboardString = theString
+            print("String is \(theString)")
+            // Put the string into your search bar and do the search
+            let newItem = Item()
+            newItem.content = theString
+            newItem.dateCreated = Date()
+            controller.addItemToCategory(item: newItem, cat: selectedCategory)
+        }
+        
+        loadItems()
+    }
+    
     func loadItems() {
         //toDoItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: true)
-//        guard let toDoItems = toDoItems else {
-//            return
-//        }
-
+        //        guard let toDoItems = toDoItems else {
+        //            return
+        //        }
+        
         print(  "==============\nNEXT")
-        for (index, element) in clipItems.enumerated() {
+        for (index, element) in clipItems!.enumerated() {
             print(  "\(index+1)=====\(element.content)")
         }
- //        tableView.reloadData()
+        //        tableView.reloadData()
     }
 }
 

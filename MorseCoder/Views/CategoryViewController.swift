@@ -14,12 +14,13 @@ class CategoryViewController {
     var realm: Realm!
     
     init (){
+        print(Realm.Configuration.defaultConfiguration.fileURL)
         //init Realm
         if realm == nil {
             do {
                 realm = try Realm()
             } catch {
-                print("Error initialising new realm, \(error)")
+                Log.error("Error initialising new realm, \(error)")
             }
         }
     }
@@ -41,19 +42,33 @@ class CategoryViewController {
         }
     }
     
-    func loadCategories() -> Results<Category> {
-        
-        categories = realm.objects(Category.self)//lần đầu tiên tại sao ko = nil?
-        if categories == nil {
-            createDefaultCategory()
-            categories = realm.objects(Category.self)
+    func loadCategories() -> Results<Category>? {
+        guard realm != nil else {
+            Log.error("realm chưa khởi tạo")
+            return nil
         }
+        categories = realm.objects(Category.self)//lần đầu tiên tại sao ko = nil?
+        //        if categories == nil {
+        //            createDefaultCategory()
+        //            categories = realm.objects(Category.self)
+        //        }
         return categories
         // tableView.reloadData()
     }
     
+    func addItemToCategory(item: Item, cat: Category) {
+        do {
+            try self.realm.write {
+                cat.items.append(item)
+            }
+        } catch {
+            print("Error saving new items, \(error)")
+        }
+        
+    }
+    
     func getDefaultCategory () -> Category? {
-        return loadCategories().first
+        return loadCategories()?.first
     }
     //    override func viewDidLoad() {
     //        super.viewDidLoad()

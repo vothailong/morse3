@@ -40,7 +40,7 @@ class PracticeViewController: UIViewController {
     
     var lastpasteboardString: String?
     var toDoItems: Results<Item>?
-    var selectedCategory: Category!
+    var selectedCategory: Category?
     let realm = try! Realm()
     
     override func viewDidLoad() {
@@ -69,9 +69,9 @@ class PracticeViewController: UIViewController {
         
         morseKeyboardView.setNextKeyboardVisible(false)
         
-        selectedCategory = CategoryViewController().loadCategories().first!
+        selectedCategory = CategoryViewController().loadCategories()?.first
        
-        toDoItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: false)
+        toDoItems = selectedCategory?.items.sorted(byKeyPath: "dateCreated", ascending: false)
     }
     
     func loadItems() {
@@ -117,8 +117,17 @@ extension PracticeViewController {
           
         // Start the app with the keyboard showing
         textField.becomeFirstResponder()
+       
+        addClipboardItemToDB()
+        loadItems()
+        
+        
+         
+    }
+    
+    func addClipboardItemToDB() {
         let pasteboardString: String? = UIPasteboard.general.string
-        guard let   theString = pasteboardString else { return  }
+        guard let   theString = pasteboardString, let selectedCategory = selectedCategory else { return  }
         lastpasteboardString = toDoItems?.first?.content
         
         if  theString == lastpasteboardString {
@@ -139,11 +148,6 @@ extension PracticeViewController {
                 print("Error saving new items, \(error)")
             }
         }
-        
-        loadItems()
-        
-        
-         
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {

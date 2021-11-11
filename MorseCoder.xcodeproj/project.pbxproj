@@ -25,14 +25,14 @@
 		04512C662015530F0022BDCD /* MorseColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04512C642015530F0022BDCD /* MorseColors.swift */; };
 		04512C672015530F0022BDCD /* MorseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04512C652015530F0022BDCD /* MorseData.swift */; };
 		18E28E25207409F800F3841C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E28E24207409F800F3841C /* LaunchScreen.storyboard */; };
+		9044AE2248FBA21A26FDA682 /* libPods-MorseKeyboard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2524BCD81F7E9979FB78EA /* libPods-MorseKeyboard.a */; };
 		B046C9C7273BA32D001D579F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046C9C6273BA32D001D579F /* CategoryViewController.swift */; };
 		B046C9C8273BA32D001D579F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046C9C6273BA32D001D579F /* CategoryViewController.swift */; };
 		B0DA2F94273B748E00745020 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA2F93273B748E00745020 /* Item.swift */; };
 		B0DA2F95273B748E00745020 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA2F93273B748E00745020 /* Item.swift */; };
 		B0DA2F99273B78CB00745020 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA2F98273B78CB00745020 /* Category.swift */; };
 		B0DA2F9A273B78CB00745020 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA2F98273B78CB00745020 /* Category.swift */; };
-		C3FAE33D25B0DB5D6874D917 /* libPods-MorseCoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96726EE4003990F58BF7A33A /* libPods-MorseCoder.a */; };
-		E7724BEE9C9FB01A39E1BB1B /* libPods-MorseKeyboard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2750BA44AAD0170366391DA /* libPods-MorseKeyboard.a */; };
+		C10FB0DC5B6DD86AE4DC5F52 /* libPods-MorseCoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E56BA24C34642C320A43F3 /* libPods-MorseCoder.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,15 +75,15 @@
 		04512C642015530F0022BDCD /* MorseColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseColors.swift; sourceTree = "<group>"; };
 		04512C652015530F0022BDCD /* MorseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseData.swift; sourceTree = "<group>"; };
 		18E28E24207409F800F3841C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		212E0A44B7F0299A5B9D7D4C /* Pods-MorseCoder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseCoder.release.xcconfig"; path = "Target Support Files/Pods-MorseCoder/Pods-MorseCoder.release.xcconfig"; sourceTree = "<group>"; };
-		7324B2EE0335BCDF7291217B /* Pods-MorseKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseKeyboard.release.xcconfig"; path = "Target Support Files/Pods-MorseKeyboard/Pods-MorseKeyboard.release.xcconfig"; sourceTree = "<group>"; };
-		96726EE4003990F58BF7A33A /* libPods-MorseCoder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MorseCoder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35E56BA24C34642C320A43F3 /* libPods-MorseCoder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MorseCoder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		466734AC513E0CDEF33BF03E /* Pods-MorseKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseKeyboard.release.xcconfig"; path = "Target Support Files/Pods-MorseKeyboard/Pods-MorseKeyboard.release.xcconfig"; sourceTree = "<group>"; };
+		58B2216BE5723E888D620230 /* Pods-MorseCoder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseCoder.debug.xcconfig"; path = "Target Support Files/Pods-MorseCoder/Pods-MorseCoder.debug.xcconfig"; sourceTree = "<group>"; };
 		B046C9C6273BA32D001D579F /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		B0DA2F93273B748E00745020 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B0DA2F98273B78CB00745020 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		B33EA84ECF87F1495D6472F4 /* Pods-MorseCoder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseCoder.debug.xcconfig"; path = "Target Support Files/Pods-MorseCoder/Pods-MorseCoder.debug.xcconfig"; sourceTree = "<group>"; };
-		C2750BA44AAD0170366391DA /* libPods-MorseKeyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MorseKeyboard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCF8E13FCC366F19050A8FCE /* Pods-MorseKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseKeyboard.debug.xcconfig"; path = "Target Support Files/Pods-MorseKeyboard/Pods-MorseKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
+		B3E5EFCC3B21EBA3939AEC30 /* Pods-MorseKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseKeyboard.debug.xcconfig"; path = "Target Support Files/Pods-MorseKeyboard/Pods-MorseKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
+		C30A575AFE9B26EADA84B659 /* Pods-MorseCoder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseCoder.release.xcconfig"; path = "Target Support Files/Pods-MorseCoder/Pods-MorseCoder.release.xcconfig"; sourceTree = "<group>"; };
+		EF2524BCD81F7E9979FB78EA /* libPods-MorseKeyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MorseKeyboard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7724BEE9C9FB01A39E1BB1B /* libPods-MorseKeyboard.a in Frameworks */,
+				9044AE2248FBA21A26FDA682 /* libPods-MorseKeyboard.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3FAE33D25B0DB5D6874D917 /* libPods-MorseCoder.a in Frameworks */,
+				C10FB0DC5B6DD86AE4DC5F52 /* libPods-MorseCoder.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +122,7 @@
 				040C68F7202698E3005F729B /* MorseKeyboard */,
 				04512C3E201545290022BDCD /* Products */,
 				1961F2822DF267E77A8C82A1 /* Pods */,
-				F4783C6A3B91D433B6681D04 /* Frameworks */,
+				4B60CC2E1349424F95BB2362 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,19 +175,19 @@
 		1961F2822DF267E77A8C82A1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B33EA84ECF87F1495D6472F4 /* Pods-MorseCoder.debug.xcconfig */,
-				212E0A44B7F0299A5B9D7D4C /* Pods-MorseCoder.release.xcconfig */,
-				FCF8E13FCC366F19050A8FCE /* Pods-MorseKeyboard.debug.xcconfig */,
-				7324B2EE0335BCDF7291217B /* Pods-MorseKeyboard.release.xcconfig */,
+				58B2216BE5723E888D620230 /* Pods-MorseCoder.debug.xcconfig */,
+				C30A575AFE9B26EADA84B659 /* Pods-MorseCoder.release.xcconfig */,
+				B3E5EFCC3B21EBA3939AEC30 /* Pods-MorseKeyboard.debug.xcconfig */,
+				466734AC513E0CDEF33BF03E /* Pods-MorseKeyboard.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F4783C6A3B91D433B6681D04 /* Frameworks */ = {
+		4B60CC2E1349424F95BB2362 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				96726EE4003990F58BF7A33A /* libPods-MorseCoder.a */,
-				C2750BA44AAD0170366391DA /* libPods-MorseKeyboard.a */,
+				35E56BA24C34642C320A43F3 /* libPods-MorseCoder.a */,
+				EF2524BCD81F7E9979FB78EA /* libPods-MorseKeyboard.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,7 +199,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 040C6900202698E3005F729B /* Build configuration list for PBXNativeTarget "MorseKeyboard" */;
 			buildPhases = (
-				D0E4D900B99AA7F9EA0AB8E3 /* [CP] Check Pods Manifest.lock */,
+				21D0454148357FA170014B28 /* [CP] Check Pods Manifest.lock */,
 				040C68F2202698E3005F729B /* Sources */,
 				040C68F3202698E3005F729B /* Frameworks */,
 				040C68F4202698E3005F729B /* Resources */,
@@ -217,7 +217,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04512C4F201545290022BDCD /* Build configuration list for PBXNativeTarget "MorseCoder" */;
 			buildPhases = (
-				4C84CF123F0C33D2ACA1BF7F /* [CP] Check Pods Manifest.lock */,
+				4020816F23D70AFF55FFABA5 /* [CP] Check Pods Manifest.lock */,
 				04512C39201545290022BDCD /* Sources */,
 				04512C3A201545290022BDCD /* Frameworks */,
 				04512C3B201545290022BDCD /* Resources */,
@@ -296,29 +296,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4C84CF123F0C33D2ACA1BF7F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MorseCoder-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D0E4D900B99AA7F9EA0AB8E3 /* [CP] Check Pods Manifest.lock */ = {
+		21D0454148357FA170014B28 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -334,6 +312,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-MorseKeyboard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4020816F23D70AFF55FFABA5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MorseCoder-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -398,7 +398,7 @@
 /* Begin XCBuildConfiguration section */
 		040C68FE202698E3005F729B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCF8E13FCC366F19050A8FCE /* Pods-MorseKeyboard.debug.xcconfig */;
+			baseConfigurationReference = B3E5EFCC3B21EBA3939AEC30 /* Pods-MorseKeyboard.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 48Z4QVLCS5;
@@ -414,7 +414,7 @@
 		};
 		040C68FF202698E3005F729B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7324B2EE0335BCDF7291217B /* Pods-MorseKeyboard.release.xcconfig */;
+			baseConfigurationReference = 466734AC513E0CDEF33BF03E /* Pods-MorseKeyboard.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 48Z4QVLCS5;
@@ -541,7 +541,7 @@
 		};
 		04512C50201545290022BDCD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B33EA84ECF87F1495D6472F4 /* Pods-MorseCoder.debug.xcconfig */;
+			baseConfigurationReference = 58B2216BE5723E888D620230 /* Pods-MorseCoder.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -558,7 +558,7 @@
 		};
 		04512C51201545290022BDCD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 212E0A44B7F0299A5B9D7D4C /* Pods-MorseCoder.release.xcconfig */;
+			baseConfigurationReference = C30A575AFE9B26EADA84B659 /* Pods-MorseCoder.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

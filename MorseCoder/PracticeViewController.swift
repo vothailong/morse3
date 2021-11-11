@@ -189,6 +189,10 @@ private extension PracticeViewController {
 
 // MARK: - MorseKeyboardViewDelegate
 extension PracticeViewController: MorseKeyboardViewDelegate {
+    func insertString(_ string: String) {
+        
+    }
+    
     /// Insert character after the textfield cursor
     func insertCharacter(_ newCharacter: String) {
         textField.insertText(newCharacter)

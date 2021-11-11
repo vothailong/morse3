@@ -35,6 +35,7 @@ import UIKit
 /// any type e.g. UITextField vs UITextView.
 protocol MorseKeyboardViewDelegate: class {
     func insertCharacter(_ newCharacter: String)
+    func insertString(_ string: String)
     func deleteCharacterBeforeCursor()
     func characterBeforeCursor() -> String?
 }

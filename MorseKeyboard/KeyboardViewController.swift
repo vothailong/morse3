@@ -59,7 +59,8 @@ class KeyboardViewController: UIInputViewController {
       
 //      self.fullCellSwiftUIView = ChallengeDetailCellSwiftUIView()
       let controller = CategoryViewController ()
-      let hostingVC = UIHostingController(rootView: KeyBoardListView(controller: controller))
+      let sot = ClipboardSOT(controller: controller) 
+      let hostingVC = UIHostingController(rootView: KeyBoardListView(sot: sot,delegate: self))
       self.morseKeyboardView.swiftuiContainer.addSubview(hostingVC.view)
       hostingVC.view.pinEdges(to: self.morseKeyboardView.swiftuiContainer)
     //  hostingVC.view.backgroundColor = .yellow// .clear
@@ -96,6 +97,12 @@ extension KeyboardViewController: MorseKeyboardViewDelegate {
 
     textDocumentProxy.insertText(newCharacter)
   }
+    
+    func insertString(_ string: String) {
+       
+
+      textDocumentProxy.insertText(string)
+    }
 
   func deleteCharacterBeforeCursor() {
     textDocumentProxy.deleteBackward()

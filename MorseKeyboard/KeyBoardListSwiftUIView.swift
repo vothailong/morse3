@@ -29,18 +29,12 @@
 import SwiftUI
 import RealmSwift
 
-struct ListItem: Identifiable {
-    let id = UUID()
-    let name: String
-}
-
-struct KeyBoardListView: View {
-    
-    @State var lastpasteboardString: String?
-    var clipItems: Results<Item>?
-    var selectedCategory: Category?
-    @State var controller : CategoryViewController
-    //    let realm: Realm?
+ 
+class ClipboardSOT: ObservableObject {
+    var lastpasteboardString: String?
+    @Published var clipItems: Results<Item>?
+    @Published var selectedCategory: Category?
+    var controller : CategoryViewController
     init(controller: CategoryViewController) {
         self.controller = controller
         
@@ -53,27 +47,21 @@ struct KeyBoardListView: View {
             controller.createDefaultCategory()
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(addClipboardItemToDB),
+                                               name: NSNotification.Name.UIPasteboardChanged , object: nil)
+        addClipboardItemToDB()
         
-        
-    }
-    var body: some View {
-        
-        VStack {
-            if clipItems?.count ?? 0 > 0 {
-                List(clipItems!) { item in
-                    Text(item.content)
-                }.onAppear {
-                    addClipboardItemToDB()
-                }
-            } else {
-                List {
-                    Text("no item yet")
-                }
-            }
-        }
     }
     
-    func addClipboardItemToDB() {
+    
+//    @objc  func clipboardChanged(){
+//        let pasteboardString: String? = UIPasteboard.general.string
+//        if let theString = pasteboardString {
+//            print("String is \(theString)")
+//            // Put the string into your search bar and do the search
+//        }
+//    }
+    @objc func addClipboardItemToDB() {
         let pasteboardString: String? = UIPasteboard.general.string
         guard let   theString = pasteboardString, let selectedCategory = selectedCategory else { return  }
         lastpasteboardString = clipItems?.first?.content
@@ -89,16 +77,14 @@ struct KeyBoardListView: View {
             newItem.content = theString
             newItem.dateCreated = Date()
             controller.addItemToCategory(item: newItem, cat: selectedCategory)
+            clipItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: false)
+            loadItems()
         }
         
-        loadItems()
+        
     }
     
     func loadItems() {
-        //toDoItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: true)
-        //        guard let toDoItems = toDoItems else {
-        //            return
-        //        }
         
         print(  "==============\nNEXT")
         for (index, element) in clipItems!.enumerated() {
@@ -106,6 +92,29 @@ struct KeyBoardListView: View {
         }
         //        tableView.reloadData()
     }
+}
+
+struct KeyBoardListView: View {
+    @ObservedObject var sot: ClipboardSOT
+    weak var delegate: MorseKeyboardViewDelegate?
+    var body: some View {
+        
+        VStack {
+            if sot.clipItems?.count ?? 0 > 0 {
+                List(sot.clipItems!) { item in
+                    Text(item.content).onTapGesture {
+                        delegate?.insertString(item.content)
+                    }
+                }
+            } else {
+                List {
+                    Text("no item yet")
+                }
+            }
+        }
+    }
+    
+    
 }
 
 //struct SwiftUIView_Previews: PreviewProvider {

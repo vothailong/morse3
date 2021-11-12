@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="bMl-Sb-wKn" userLabel="View" customClass="MorseKeyboardView" customModule="MorseCoder" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="bMl-Sb-wKn" userLabel="View" customClass="MorseKeyboardView" customModule="CLipKeyKeyboard" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2w-m8-woJ" customClass="KeyboardButton" customModule="MorseCoder" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2w-m8-woJ" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
                     <rect key="frame" x="326" y="163" width="45" height="45"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="n9r-kQ-Roi"/>
@@ -27,7 +27,7 @@
                         <action selector="deletePressed" destination="bMl-Sb-wKn" eventType="touchUpInside" id="nNA-fn-D1Z"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNk-m0-Led" customClass="KeyboardButton" customModule="MorseCoder" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNk-m0-Led" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
                     <rect key="frame" x="4" y="53" width="180.5" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="990" constant="100" id="dSU-oa-pHa"/>
@@ -40,7 +40,7 @@
                         <action selector="dotPressedWithButton:" destination="bMl-Sb-wKn" eventType="touchUpInside" id="Ti6-pF-42g"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTN-eo-qVW" customClass="KeyboardButton" customModule="MorseCoder" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTN-eo-qVW" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
                     <rect key="frame" x="55" y="163" width="265" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="4Zf-9A-VQH"/>
@@ -52,7 +52,7 @@
                         <action selector="spacePressed" destination="bMl-Sb-wKn" eventType="touchUpInside" id="e9A-FH-YDd"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGO-yH-Gr2" customClass="KeyboardButton" customModule="MorseCoder" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGO-yH-Gr2" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
                     <rect key="frame" x="190.5" y="53" width="180.5" height="100"/>
                     <fontDescription key="fontDescription" type="system" pointSize="60"/>
                     <state key="normal" title="-">
@@ -72,7 +72,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pb-4e-Bbc" customClass="KeyboardButton" customModule="MorseCoder" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pb-4e-Bbc" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
                     <rect key="frame" x="4" y="163" width="45" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="GJy-b0-bnK"/>
@@ -88,12 +88,13 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="edC-ud-u82"/>
+            <color key="backgroundColor" systemColor="systemRedColor"/>
             <constraints>
                 <constraint firstItem="BTN-eo-qVW" firstAttribute="leading" secondItem="edC-ud-u82" secondAttribute="leading" priority="750" constant="4" id="3Hi-2A-xzZ"/>
                 <constraint firstItem="xGO-yH-Gr2" firstAttribute="height" secondItem="KNk-m0-Led" secondAttribute="height" id="6n7-Tc-Rbj"/>
                 <constraint firstItem="BTN-eo-qVW" firstAttribute="bottom" secondItem="e2w-m8-woJ" secondAttribute="bottom" id="7lQ-ij-Ck5"/>
-                <constraint firstItem="edC-ud-u82" firstAttribute="trailing" secondItem="BeU-2d-Dhd" secondAttribute="trailing" id="ABV-Y3-V8q"/>
-                <constraint firstItem="BeU-2d-Dhd" firstAttribute="leading" secondItem="edC-ud-u82" secondAttribute="leading" id="DdH-Wt-tjw"/>
+                <constraint firstAttribute="trailing" secondItem="BeU-2d-Dhd" secondAttribute="trailing" id="ABV-Y3-V8q"/>
+                <constraint firstItem="BeU-2d-Dhd" firstAttribute="leading" secondItem="bMl-Sb-wKn" secondAttribute="leading" id="DdH-Wt-tjw"/>
                 <constraint firstItem="BTN-eo-qVW" firstAttribute="top" secondItem="BeU-2d-Dhd" secondAttribute="bottom" id="MMx-I7-H5m"/>
                 <constraint firstItem="KNk-m0-Led" firstAttribute="leading" secondItem="edC-ud-u82" secondAttribute="leading" constant="4" id="Meq-Fh-vpj"/>
                 <constraint firstItem="edC-ud-u82" firstAttribute="bottom" secondItem="8Pb-4e-Bbc" secondAttribute="bottom" constant="5" id="Ocf-cn-aUz"/>
@@ -134,6 +135,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

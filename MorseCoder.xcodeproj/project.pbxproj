@@ -26,6 +26,9 @@
 		04512C672015530F0022BDCD /* MorseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04512C652015530F0022BDCD /* MorseData.swift */; };
 		18E28E25207409F800F3841C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E28E24207409F800F3841C /* LaunchScreen.storyboard */; };
 		9044AE2248FBA21A26FDA682 /* libPods-MorseKeyboard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2524BCD81F7E9979FB78EA /* libPods-MorseKeyboard.a */; };
+		B02AF12E273E3A1500F936D9 /* sdfsdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02AF12D273E392E00F936D9 /* sdfsdf.swift */; };
+		B02AF130273E3ECA00F936D9 /* SwiftUIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02AF12F273E3ECA00F936D9 /* SwiftUIUtils.swift */; };
+		B02AF131273E3ECA00F936D9 /* SwiftUIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02AF12F273E3ECA00F936D9 /* SwiftUIUtils.swift */; };
 		B046C9C7273BA32D001D579F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046C9C6273BA32D001D579F /* CategoryViewController.swift */; };
 		B046C9C8273BA32D001D579F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B046C9C6273BA32D001D579F /* CategoryViewController.swift */; };
 		B094FDCE273CC42100BA8AEF /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B094FDCD273CC42100BA8AEF /* File.swift */; };
@@ -86,6 +89,8 @@
 		35E56BA24C34642C320A43F3 /* libPods-MorseCoder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MorseCoder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		466734AC513E0CDEF33BF03E /* Pods-MorseKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseKeyboard.release.xcconfig"; path = "Target Support Files/Pods-MorseKeyboard/Pods-MorseKeyboard.release.xcconfig"; sourceTree = "<group>"; };
 		58B2216BE5723E888D620230 /* Pods-MorseCoder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorseCoder.debug.xcconfig"; path = "Target Support Files/Pods-MorseCoder/Pods-MorseCoder.debug.xcconfig"; sourceTree = "<group>"; };
+		B02AF12D273E392E00F936D9 /* sdfsdf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sdfsdf.swift; sourceTree = "<group>"; };
+		B02AF12F273E3ECA00F936D9 /* SwiftUIUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIUtils.swift; sourceTree = "<group>"; };
 		B046C9C6273BA32D001D579F /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		B094FDCD273CC42100BA8AEF /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		B094FDCF273CC60E00BA8AEF /* KeyBoardListSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardListSwiftUIView.swift; sourceTree = "<group>"; };
@@ -157,8 +162,10 @@
 			children = (
 				B0C0A111273D241E0032DB27 /* MorseCoderDebug.entitlements */,
 				04512C40201545290022BDCD /* AppDelegate.swift */,
+				B02AF12F273E3ECA00F936D9 /* SwiftUIUtils.swift */,
 				B0EA09F9273CD28200296123 /* UIViewEx.swift */,
 				B0C0A10A273D17600032DB27 /* Log.swift */,
+				B02AF12D273E392E00F936D9 /* sdfsdf.swift */,
 				B0C0A10D273D1DAB0032DB27 /* Constants.swift */,
 				04512C42201545290022BDCD /* PracticeViewController.swift */,
 				04512C44201545290022BDCD /* Main.storyboard */,
@@ -374,6 +381,7 @@
 				B0C0A10C273D17600032DB27 /* Log.swift in Sources */,
 				040C690420269B2E005F729B /* KeyboardButton.swift in Sources */,
 				040C690220269B2E005F729B /* MorseColors.swift in Sources */,
+				B02AF131273E3ECA00F936D9 /* SwiftUIUtils.swift in Sources */,
 				040C68F9202698E3005F729B /* KeyboardViewController.swift in Sources */,
 				B094FDD0273CC60E00BA8AEF /* KeyBoardListSwiftUIView.swift in Sources */,
 				B0C0A10F273D1DAB0032DB27 /* Constants.swift in Sources */,
@@ -389,10 +397,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B02AF12E273E3A1500F936D9 /* sdfsdf.swift in Sources */,
 				B0EA09FA273CD28200296123 /* UIViewEx.swift in Sources */,
 				04512C672015530F0022BDCD /* MorseData.swift in Sources */,
 				B0C0A10B273D17600032DB27 /* Log.swift in Sources */,
 				04512C60201553090022BDCD /* KeyboardButton.swift in Sources */,
+				B02AF130273E3ECA00F936D9 /* SwiftUIUtils.swift in Sources */,
 				04512C61201553090022BDCD /* MorseKeyboardView.swift in Sources */,
 				04512C43201545290022BDCD /* PracticeViewController.swift in Sources */,
 				B0DA2F94273B748E00745020 /* Item.swift in Sources */,

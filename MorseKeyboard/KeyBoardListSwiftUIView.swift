@@ -37,7 +37,7 @@ class ClipboardSOT: ObservableObject {
     var controller : CategoryViewController
     init(controller: CategoryViewController) {
         self.controller = controller
-        
+    
         if let cats = controller.loadCategories(){
             selectedCategory = cats.first
             if let selectedCategory = selectedCategory, selectedCategory.items.count > 0 {
@@ -50,7 +50,17 @@ class ClipboardSOT: ObservableObject {
         NotificationCenter.default.addObserver(self, selector: #selector(addClipboardItemToDB),
                                                name: NSNotification.Name.UIPasteboardChanged , object: nil)
         addClipboardItemToDB()
-        
+
+        if #available(iOS 14.0, *) {
+               // iOS 14 doesn't have extra separators below the list by default.
+           } else {
+               // To remove only extra separators below the list:
+               UITableView.appearance().tableFooterView = UIView()
+           }
+
+           // To remove all separators including the actual ones:
+           UITableView.appearance().separatorStyle = .none
+
     }
     
     
@@ -97,15 +107,28 @@ class ClipboardSOT: ObservableObject {
 struct KeyBoardListView: View {
     @ObservedObject var sot: ClipboardSOT
     weak var delegate: MorseKeyboardViewDelegate?
+    
     var body: some View {
         
         VStack {
             if sot.clipItems?.count ?? 0 > 0 {
                 List(sot.clipItems!) { item in
+                    
                     Text(item.content).onTapGesture {
                         delegate?.insertString(item.content)
                     }
+                    .alignmentGuide(.leading) { d in d[.leading] }
+                    .frame(maxWidth: .infinity)
+                    
+                  //  .border(Color.black, width: 0.5)
+                    .font(.footnote)
+                    .lineLimit(3)
+                    .background(Color.purple)
+                  .listRowInsets(EdgeInsets())
+                   // .removeSeparator()
+                    
                 }
+                .background(Color.orange)
             } else {
                 List {
                     Text("no item yet")
@@ -117,9 +140,24 @@ struct KeyBoardListView: View {
     
 }
 
-//struct SwiftUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        KeyBoardListView()
-//    }
-//}
-//
+struct RowSeparatorModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOSApplicationExtension 15.0, *) {
+            content
+                .listRowSeparator(.hidden)
+        } else {
+            content
+        }
+    }
+}
+extension View {
+    func removeSeparator() -> some View {
+        modifier(RowSeparatorModifier())
+    }
+}
+struct SwiftUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        let sot = ClipboardSOT(controller: CategoryViewController ())
+        return KeyBoardListView(sot: sot,delegate: nil)
+    }
+}

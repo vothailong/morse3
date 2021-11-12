@@ -57,9 +57,7 @@ class KeyboardViewController: UIInputViewController {
     locationManager.startUpdatingLocation()
       
       
-//      self.fullCellSwiftUIView = ChallengeDetailCellSwiftUIView()
-      let controller = CategoryViewController ()
-      let sot = ClipboardSOT(controller: controller) 
+      let sot = ClipboardSOT(controller: CategoryViewController ())
       let hostingVC = UIHostingController(rootView: KeyBoardListView(sot: sot,delegate: self))
       self.morseKeyboardView.swiftuiContainer.addSubview(hostingVC.view)
       hostingVC.view.pinEdges(to: self.morseKeyboardView.swiftuiContainer)

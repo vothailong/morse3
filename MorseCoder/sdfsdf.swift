@@ -70,7 +70,7 @@ end
             .listRowBackground(Color.green)
             //.listSeparatorStyle(style: .none)
         }
-        //        .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.horizontal)
         .onAppear {
             UITableView.appearance().backgroundColor = .clear
             UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))

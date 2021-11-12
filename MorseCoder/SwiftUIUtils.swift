@@ -260,7 +260,12 @@ struct GeneralList<Content: View>: View {
         Group {
             if #available(iOS 14.0, *) {
                 ScrollView {
-                    AnyView(LazyVStack(alignment: .leading, spacing: verticalSpacing) { content().padding(.horizontal, 15) })
+                    AnyView(LazyVStack(alignment: .leading, spacing: verticalSpacing) {
+                        content()
+                        //.padding(.horizontal, 15)
+                        
+                    }
+                    )
                 }
             } else {
                 List { content() }

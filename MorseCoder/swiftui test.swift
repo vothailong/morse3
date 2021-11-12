@@ -33,33 +33,33 @@ sdjhfkjh
                         Text(item).onTapGesture {
                             delegate?.insertString(item)
                         }
-                        //  .alignmentGuide(.leading) { d in d[.trailing] }
-                        //.frame(maxWidth: .infinity)
-                        //            .frame(alignment: .topLeading)
                         
                         Spacer()
                     }
-                    .border(Color.red, width: 1)
-                    .padding()
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 4)
+                    .border(Color.gray, width: 1)
                     .font(.footnote)
                     .lineLimit(4)
-                    .listRowInsets(EdgeInsets())
                     .removeSeparator()
                     
-                }
+                }  .listRowInsets( EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4) )//default: 8 ?
             }
+            .environment(\.defaultMinListRowHeight, 0)// default : 8?
             .listStyle(GroupedListStyle())//remove padding of the entire list
             //.listRowBackground(Color.green)
             //.listSeparatorStyle(style: .none)
         }
         .edgesIgnoringSafeArea(.horizontal)
         .onAppear {
-            UITableView.appearance().backgroundColor = .clear
+            UITableView.appearance().backgroundColor = .blue
             UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
             UITableView.appearance().showsVerticalScrollIndicator = false
             
-            UITableViewCell.appearance().selectionStyle = .none
+            //UITableViewCell.appearance().selectionStyle = .none
         }
+        
+      
         
     }
 }

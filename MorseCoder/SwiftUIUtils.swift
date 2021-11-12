@@ -270,7 +270,7 @@ struct GeneralList<Content: View>: View {
 //            } else {
 //                List { content() }
 //            }
-            List { content() }   
+            List() { content() }   
         }
     }
 }

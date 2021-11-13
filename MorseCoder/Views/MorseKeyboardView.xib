@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -15,113 +15,69 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2w-m8-woJ" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
-                    <rect key="frame" x="326" y="163" width="45" height="45"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="45" id="n9r-kQ-Roi"/>
-                    </constraints>
-                    <state key="normal" image="Backspace">
-                        <color key="titleColor" systemColor="darkTextColor"/>
-                    </state>
-                    <connections>
-                        <action selector="deletePressed" destination="bMl-Sb-wKn" eventType="touchUpInside" id="nNA-fn-D1Z"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNk-m0-Led" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
-                    <rect key="frame" x="4" y="53" width="180.5" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="height" priority="990" constant="100" id="dSU-oa-pHa"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                    <state key="normal" title="•">
-                        <color key="titleColor" systemColor="darkTextColor"/>
-                    </state>
-                    <connections>
-                        <action selector="dotPressedWithButton:" destination="bMl-Sb-wKn" eventType="touchUpInside" id="Ti6-pF-42g"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTN-eo-qVW" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
-                    <rect key="frame" x="55" y="163" width="265" height="45"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="4Zf-9A-VQH"/>
-                    </constraints>
-                    <state key="normal" title="space">
-                        <color key="titleColor" systemColor="darkTextColor"/>
-                    </state>
-                    <connections>
-                        <action selector="spacePressed" destination="bMl-Sb-wKn" eventType="touchUpInside" id="e9A-FH-YDd"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGO-yH-Gr2" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
-                    <rect key="frame" x="190.5" y="53" width="180.5" height="100"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                    <state key="normal" title="-">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="dashPressed" destination="bMl-Sb-wKn" eventType="touchUpInside" id="vND-xF-p6O"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgB-ba-hsG">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
-                    <color key="backgroundColor" red="0.68235294120000001" green="0.70196078429999997" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="qjg-Qo-drY"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pb-4e-Bbc" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
-                    <rect key="frame" x="4" y="163" width="45" height="45"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="GJy-b0-bnK"/>
-                        <constraint firstAttribute="height" constant="45" id="Q0m-qA-haf"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="kwc-vT-Pa0"/>
-                        <constraint firstAttribute="width" constant="45" id="luU-Vb-6n7"/>
-                    </constraints>
-                    <state key="normal" image="NextKeyboard"/>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeU-2d-Dhd">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" priority="250" constant="173" id="pA2-vS-7Ld"/>
+                    </constraints>
                 </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ahc-1i-gED">
+                    <rect key="frame" x="0.0" y="173" width="375" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pb-4e-Bbc" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="45" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="45" id="luU-Vb-6n7"/>
+                            </constraints>
+                            <state key="normal" image="NextKeyboard"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTN-eo-qVW" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
+                            <rect key="frame" x="45" y="0.0" width="285" height="40"/>
+                            <state key="normal" title="space">
+                                <color key="titleColor" systemColor="darkTextColor"/>
+                            </state>
+                            <connections>
+                                <action selector="spacePressed" destination="bMl-Sb-wKn" eventType="touchUpInside" id="e9A-FH-YDd"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2w-m8-woJ" customClass="KeyboardButton" customModule="CLipKeyKeyboard" customModuleProvider="target">
+                            <rect key="frame" x="330" y="0.0" width="45" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="45" id="n9r-kQ-Roi"/>
+                            </constraints>
+                            <state key="normal" image="Backspace">
+                                <color key="titleColor" systemColor="darkTextColor"/>
+                            </state>
+                            <connections>
+                                <action selector="deletePressed" destination="bMl-Sb-wKn" eventType="touchUpInside" id="nNA-fn-D1Z"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    <constraints>
+                        <constraint firstItem="e2w-m8-woJ" firstAttribute="height" secondItem="BTN-eo-qVW" secondAttribute="height" id="ITa-DO-kdV"/>
+                        <constraint firstItem="BTN-eo-qVW" firstAttribute="height" secondItem="ahc-1i-gED" secondAttribute="height" id="Vtn-xQ-6ql"/>
+                        <constraint firstItem="8Pb-4e-Bbc" firstAttribute="height" secondItem="ahc-1i-gED" secondAttribute="height" id="dfZ-20-N93"/>
+                        <constraint firstAttribute="height" constant="40" id="rJK-UC-jgy"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="edC-ud-u82"/>
-            <color key="backgroundColor" systemColor="systemRedColor"/>
+            <color key="backgroundColor" systemColor="systemPurpleColor"/>
             <constraints>
-                <constraint firstItem="BTN-eo-qVW" firstAttribute="leading" secondItem="edC-ud-u82" secondAttribute="leading" priority="750" constant="4" id="3Hi-2A-xzZ"/>
-                <constraint firstItem="xGO-yH-Gr2" firstAttribute="height" secondItem="KNk-m0-Led" secondAttribute="height" id="6n7-Tc-Rbj"/>
-                <constraint firstItem="BTN-eo-qVW" firstAttribute="bottom" secondItem="e2w-m8-woJ" secondAttribute="bottom" id="7lQ-ij-Ck5"/>
+                <constraint firstItem="edC-ud-u82" firstAttribute="trailing" secondItem="ahc-1i-gED" secondAttribute="trailing" id="9jh-N2-iN1"/>
                 <constraint firstAttribute="trailing" secondItem="BeU-2d-Dhd" secondAttribute="trailing" id="ABV-Y3-V8q"/>
                 <constraint firstItem="BeU-2d-Dhd" firstAttribute="leading" secondItem="bMl-Sb-wKn" secondAttribute="leading" id="DdH-Wt-tjw"/>
-                <constraint firstItem="BTN-eo-qVW" firstAttribute="top" secondItem="BeU-2d-Dhd" secondAttribute="bottom" id="MMx-I7-H5m"/>
-                <constraint firstItem="KNk-m0-Led" firstAttribute="leading" secondItem="edC-ud-u82" secondAttribute="leading" constant="4" id="Meq-Fh-vpj"/>
-                <constraint firstItem="edC-ud-u82" firstAttribute="bottom" secondItem="8Pb-4e-Bbc" secondAttribute="bottom" constant="5" id="Ocf-cn-aUz"/>
-                <constraint firstItem="BTN-eo-qVW" firstAttribute="top" secondItem="KNk-m0-Led" secondAttribute="bottom" constant="10" id="QWq-eQ-xzo"/>
-                <constraint firstItem="e2w-m8-woJ" firstAttribute="leading" secondItem="BTN-eo-qVW" secondAttribute="trailing" constant="6" id="Qnp-IJ-Njb"/>
-                <constraint firstItem="e2w-m8-woJ" firstAttribute="height" secondItem="BTN-eo-qVW" secondAttribute="height" id="X58-be-w3B"/>
-                <constraint firstItem="YgB-ba-hsG" firstAttribute="trailing" secondItem="edC-ud-u82" secondAttribute="trailing" id="XO4-1i-4KL"/>
-                <constraint firstItem="edC-ud-u82" firstAttribute="bottom" secondItem="BTN-eo-qVW" secondAttribute="bottom" constant="5" id="Y4o-8E-n5T"/>
-                <constraint firstItem="BTN-eo-qVW" firstAttribute="leading" secondItem="8Pb-4e-Bbc" secondAttribute="trailing" constant="6" id="a9U-RG-MUM"/>
-                <constraint firstItem="edC-ud-u82" firstAttribute="trailing" secondItem="xGO-yH-Gr2" secondAttribute="trailing" constant="4" id="bNX-nB-4qn"/>
-                <constraint firstItem="xGO-yH-Gr2" firstAttribute="top" secondItem="KNk-m0-Led" secondAttribute="top" id="dPQ-07-dhP"/>
-                <constraint firstItem="BeU-2d-Dhd" firstAttribute="top" secondItem="edC-ud-u82" secondAttribute="top" id="gRe-B2-4Su"/>
-                <constraint firstItem="YgB-ba-hsG" firstAttribute="top" secondItem="edC-ud-u82" secondAttribute="top" id="hLf-64-trO"/>
-                <constraint firstItem="xGO-yH-Gr2" firstAttribute="leading" secondItem="KNk-m0-Led" secondAttribute="trailing" constant="6" id="qzH-8N-gpP"/>
-                <constraint firstItem="edC-ud-u82" firstAttribute="trailing" secondItem="e2w-m8-woJ" secondAttribute="trailing" constant="4" id="tHY-s9-i2i"/>
-                <constraint firstItem="KNk-m0-Led" firstAttribute="width" secondItem="xGO-yH-Gr2" secondAttribute="width" id="tTQ-eZ-9EE"/>
-                <constraint firstItem="YgB-ba-hsG" firstAttribute="leading" secondItem="edC-ud-u82" secondAttribute="leading" id="wVT-m8-TBh"/>
-                <constraint firstItem="8Pb-4e-Bbc" firstAttribute="leading" secondItem="edC-ud-u82" secondAttribute="leading" constant="4" id="yOH-LI-Ub5"/>
-                <constraint firstItem="KNk-m0-Led" firstAttribute="top" secondItem="YgB-ba-hsG" secondAttribute="bottom" constant="8" id="ysr-mV-dLr"/>
+                <constraint firstItem="ahc-1i-gED" firstAttribute="bottom" secondItem="bMl-Sb-wKn" secondAttribute="bottom" id="QG8-AX-rPf"/>
+                <constraint firstItem="BeU-2d-Dhd" firstAttribute="top" secondItem="bMl-Sb-wKn" secondAttribute="top" id="gRe-B2-4Su"/>
+                <constraint firstItem="ahc-1i-gED" firstAttribute="leading" secondItem="edC-ud-u82" secondAttribute="leading" id="pks-N5-r93"/>
+                <constraint firstItem="BeU-2d-Dhd" firstAttribute="bottom" secondItem="ahc-1i-gED" secondAttribute="top" id="qm7-Ld-WgM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="deleteButton" destination="e2w-m8-woJ" id="Uxb-6j-bgR"/>
                 <outlet property="nextKeyboardButton" destination="8Pb-4e-Bbc" id="thb-gp-vWj"/>
-                <outlet property="previewLabel" destination="YgB-ba-hsG" id="Q0L-50-Yxk"/>
-                <outlet property="spaceButtonToNextKeyboardConstraint" destination="a9U-RG-MUM" id="i3Y-NM-TOG"/>
-                <outlet property="spaceButtonToParentConstraint" destination="3Hi-2A-xzZ" id="Dni-Em-wea"/>
                 <outlet property="swiftuiContainer" destination="BeU-2d-Dhd" id="x4e-rC-7sv"/>
             </connections>
             <point key="canvasLocation" x="39.5" y="257.5"/>
@@ -136,8 +92,11 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

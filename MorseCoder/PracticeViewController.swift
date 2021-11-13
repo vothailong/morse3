@@ -108,9 +108,7 @@ class PracticeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let previousSignals = MorseData.code["a"] {
-            // print("ksdj")
-        }
+       
         
         
         reloadViews()
@@ -177,7 +175,7 @@ extension PracticeViewController {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "selectedTextRange" {
             // Clear out the current signal as the cursor placement changed
-            morseKeyboardView.signalCache = []
+           // morseKeyboardView.signalCache = []
         }
     }
 }

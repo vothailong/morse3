@@ -71,9 +71,11 @@ class ClipboardSOT: ObservableObject {
     }
     
     func loadItems() {
-        
+        guard let clipItems = clipItems else {
+            return
+        }
         print(  "==============\nNEXT")
-        for (index, element) in clipItems!.enumerated() {
+        for (index, element) in clipItems.enumerated() {
             print(  "\(index+1)=====\(element.content)")
         }
         //        tableView.reloadData()

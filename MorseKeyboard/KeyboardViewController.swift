@@ -44,8 +44,9 @@ class KeyboardViewController: UIInputViewController {
       ])
 
     morseKeyboardView.setNextKeyboardVisible(needsInputModeSwitchKey)
-    morseKeyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-
+   // morseKeyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+      morseKeyboardView.nextKeyboardButton.addTarget(self, action: #selector(advanceToNextInputMode), for: .allTouchEvents)
+       
     requestSupplementaryLexicon { lexicon in
       self.userLexicon = lexicon
     }

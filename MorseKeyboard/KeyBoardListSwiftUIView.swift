@@ -87,7 +87,7 @@ class ClipboardSOT: ObservableObject {
             newItem.content = theString
             newItem.dateCreated = Date()
             controller.addItemToCategory(item: newItem, cat: selectedCategory)
-            clipItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: false)
+        //    clipItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: false)
             loadItems()
         }
         
@@ -107,36 +107,64 @@ class ClipboardSOT: ObservableObject {
 struct KeyBoardListView: View {
     @ObservedObject var sot: ClipboardSOT
     weak var delegate: MorseKeyboardViewDelegate?
-    
     var body: some View {
         
-        VStack {
-            if sot.clipItems?.count ?? 0 > 0 {
-                List(sot.clipItems!) { item in
-                    
-                    Text(item.content).onTapGesture {
-                        delegate?.insertString(item.content)
+        ScrollViewReader { proxy in
+            VStack {
+                Button("Jump to #50") {
+                    proxy.scrollTo(2, anchor: .top)
+                }
+                VStack {
+                    if sot.clipItems?.count ?? 0 > 0 {
+                        GeneralList(verticalSpacing: 1) {
+                            ForEach(sot.clipItems!)  { item in
+                                HStack {
+                                    Text(item.content).onTapGesture {
+                                        delegate?.insertString(item.content)
+                                    }
+                                    
+                                    Spacer()
+                                }
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 4)
+                                .border(Color.gray, width: 1)
+                                .font(.footnote)
+                                .lineLimit(4)
+                                .removeSeparator()
+                                
+                            }  .listRowInsets( EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4) )//default: 8 ?
+                        }
+                        .environment(\.defaultMinListRowHeight, 0)// default : 8?
+                        .listStyle(GroupedListStyle())//remove padding of the entire list
+                    } else {
+                        List {
+                            Text("no item yet")
+                        }
                     }
-                    .alignmentGuide(.leading) { d in d[.leading] }
-                    .frame(maxWidth: .infinity)
-                    
-                  //  .border(Color.black, width: 0.5)
-                    .font(.footnote)
-                    .lineLimit(3)
-                    .background(Color.purple)
-                  .listRowInsets(EdgeInsets())
-                   // .removeSeparator()
-                    
                 }
-                .background(Color.orange)
-            } else {
-                List {
-                    Text("no item yet")
-                }
+                
+                List(0..<100, id: \.self) { i in
+                                   Text("Example \(i)")
+                                   .id(i)
+                               }
+           
             }
         }
+        //.edgesIgnoringSafeArea(.horizontal)
+        .onAppear {
+            UITableView.appearance().backgroundColor = .blue
+            UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
+            UITableView.appearance().showsVerticalScrollIndicator = false
+            
+            //UITableViewCell.appearance().selectionStyle = .none
+        }
+       
+       
+        
+      
+        
     }
-    
+ 
     
 }
 

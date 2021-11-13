@@ -2,55 +2,111 @@
 import SwiftUI
 //import RealmSwift
 
-
+struct Itemm: Identifiable {
+    
+    let id : Int
+    var value: String = ""
+}
 
 struct KeyBoardListView: View {
     weak var delegate: MorseKeyboardViewDelegate?
-    let items = [ """
-This goes
-over multiple
+    @State private var itemlist = [
+        Itemm(id: 1, value: "jhfkcvxs"),
+        Itemm(id: 2, value: "jhfkxcves"),
+        Itemm(id: 3, value: "jhfkfsdfs"),
+        Itemm(id: 4, value: "345fds"),
+        Itemm(id: 5, value: "5"),
+    Itemm(id: 6, value: "f"),
+        Itemm(id: 7, value: "5eb")
+    ]
+    var selected: UUID?
+    init() {
+        let items = [ """
+         This goes
+     over multiple
 sdfdsfsdfsdfsdfenddfdafsf
 lines
 sdjhfkjh
 """
-                  ,"abc","skdfkfdj","def"]
-    init() {
+                      ,"abc","skdfkfdj","def", "ejflfj"]
+//        for (idx, item) in items.enumerated() {
+//            let id = UUID()
+//            itemlist.append(Itemm(  id: <#UUID#>, id: <#UUID#>, value:item ))
+//            if idx == 2 {
+//                selected = id
+//            }
+//        }
+        
         // To remove only extra separators below the list:
         UITableView.appearance().tableFooterView = UIView()
         
         // To remove all separators including the actual ones:
         UITableView.appearance().separatorStyle = .none
     }
+    @State private var previousIndex : Int? = nil
+    
     var body: some View {
         
-        
-        VStack
-        {
-            GeneralList(verticalSpacing: 1) {
-                ForEach(items, id: \.self)  { item in
-                    
-                    HStack {
-                        Text(item).onTapGesture {
-                            delegate?.insertString(item)
+        ScrollViewReader { proxy in
+            VStack {
+                Button("Jump to   ") {
+                    proxy.scrollTo(2 ,anchor: .top)
+                }
+//                List    {
+//                    ForEach(itemlist) { item in
+//                        Text("\(item.value)")
+////                         .id(item)
+//                    }
+//                    .onDelete { offsets in
+//                        itemlist.remove(atOffsets: offsets)
+//                        self.previousIndex = offsets.first
+//                        print("previous=\(String(describing: previousIndex))")
+//                    }
+//                    .onChange(of: previousIndex) { (e: Equatable) in
+//                        proxy.scrollTo(previousIndex!+2, anchor: .top)
+////                        proxy.scrollTo(3, anchor: .top) // will display 1st cell
+//                    }
+//                }
+//                .frame(maxHeight: 50)
+
+                GeneralList(verticalSpacing: 1) {
+                    ForEach(itemlist )  { item in
+                        
+                        HStack {
+                            Text(item.value).onTapGesture {
+                                 //                               delegate?.insertString(item)
+                            }
+                            
+                            Spacer()
                         }
                         
-                        Spacer()
+
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 4)
+                        .border(Color.gray, width: 1)
+                        .font(.footnote)
+                        .lineLimit(4)
+                        .removeSeparator()
+                        
                     }
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 4)
-                    .border(Color.gray, width: 1)
-                    .font(.footnote)
-                    .lineLimit(4)
-                    .removeSeparator()
+                    .onDelete { offsets in
+                        itemlist.remove(atOffsets: offsets)
+                        self.previousIndex = offsets.first
+                        print("previous=\(String(describing: previousIndex))")
+                    }
+                    .onChange(of: previousIndex) { (e: Equatable) in
+                        proxy.scrollTo(previousIndex!+2, anchor: .top)
+                        //                        proxy.scrollTo(3, anchor: .top) // will display 1st cell
+                    }
+                    .listRowInsets( EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4) )//default: 8 ?
                     
-                }  .listRowInsets( EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4) )//default: 8 ?
+                }
+                .frame(maxHeight: 50)
+                .environment(\.defaultMinListRowHeight, 0)// default : 8?
+                .listStyle(GroupedListStyle())//remove padding of the entire list
             }
-            .environment(\.defaultMinListRowHeight, 0)// default : 8?
-            .listStyle(GroupedListStyle())//remove padding of the entire list
-            //.listRowBackground(Color.green)
-            //.listSeparatorStyle(style: .none)
         }
-        .edgesIgnoringSafeArea(.horizontal)
+        //.edgesIgnoringSafeArea(.horizontal)
         .onAppear {
             UITableView.appearance().backgroundColor = .blue
             UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
@@ -58,6 +114,8 @@ sdjhfkjh
             
             //UITableViewCell.appearance().selectionStyle = .none
         }
+       
+       
         
       
         

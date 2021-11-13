@@ -11,31 +11,17 @@ struct Itemm: Identifiable {
 struct KeyBoardListView: View {
     weak var delegate: MorseKeyboardViewDelegate?
     @State private var itemlist = [
-        Itemm(id: 1, value: "jhfkcvxs"),
-        Itemm(id: 2, value: "jhfkxcves"),
-        Itemm(id: 3, value: "jhfkfsdfs"),
-        Itemm(id: 4, value: "345fds"),
+        Itemm(id: 1, value: "1"),
+        Itemm(id: 2, value: "2"),
+        Itemm(id: 3, value: "3"),
+        Itemm(id: 4, value: "4"),
         Itemm(id: 5, value: "5"),
-    Itemm(id: 6, value: "f"),
-        Itemm(id: 7, value: "5eb")
+        Itemm(id: 6, value: "6"),
+        Itemm(id: 7, value: "7"),
+        Itemm(id: 8, value: "8")
     ]
     var selected: UUID?
     init() {
-        let items = [ """
-         This goes
-     over multiple
-sdfdsfsdfsdfsdfenddfdafsf
-lines
-sdjhfkjh
-"""
-                      ,"abc","skdfkfdj","def", "ejflfj"]
-//        for (idx, item) in items.enumerated() {
-//            let id = UUID()
-//            itemlist.append(Itemm(  id: <#UUID#>, id: <#UUID#>, value:item ))
-//            if idx == 2 {
-//                selected = id
-//            }
-//        }
         
         // To remove only extra separators below the list:
         UITableView.appearance().tableFooterView = UIView()
@@ -43,8 +29,10 @@ sdjhfkjh
         // To remove all separators including the actual ones:
         UITableView.appearance().separatorStyle = .none
     }
-    @State private var previousIndex : Int? = nil
     
+    @State private var previousIndex : Int? = nil
+    @State var visibleRows: Set<Int> = []
+    @State private var visibleList = [Itemm]()
     var body: some View {
         
         ScrollViewReader { proxy in
@@ -52,22 +40,6 @@ sdjhfkjh
                 Button("Jump to   ") {
                     proxy.scrollTo(2 ,anchor: .top)
                 }
-//                List    {
-//                    ForEach(itemlist) { item in
-//                        Text("\(item.value)")
-////                         .id(item)
-//                    }
-//                    .onDelete { offsets in
-//                        itemlist.remove(atOffsets: offsets)
-//                        self.previousIndex = offsets.first
-//                        print("previous=\(String(describing: previousIndex))")
-//                    }
-//                    .onChange(of: previousIndex) { (e: Equatable) in
-//                        proxy.scrollTo(previousIndex!+2, anchor: .top)
-////                        proxy.scrollTo(3, anchor: .top) // will display 1st cell
-//                    }
-//                }
-//                .frame(maxHeight: 50)
 
                 GeneralList(verticalSpacing: 1) {
                     ForEach(itemlist )  { item in
@@ -87,8 +59,18 @@ sdjhfkjh
                         .font(.footnote)
                         .lineLimit(4)
                         .removeSeparator()
-                        
+
+                        .onAppear {
+                           // self.visibleRows.insert(item.id)
+                            self.visibleList.append(item)
+                        }
+                        .onDisappear {
+                            visibleList.removeAll { item1 in
+                                item1.id == item.id
+                            }
+                        }
                     }
+                            
                     .onDelete { offsets in
                         itemlist.remove(atOffsets: offsets)
                         self.previousIndex = offsets.first
@@ -101,9 +83,12 @@ sdjhfkjh
                     .listRowInsets( EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4) )//default: 8 ?
                     
                 }
-                .frame(maxHeight: 50)
+                .frame(height: 150)
                 .environment(\.defaultMinListRowHeight, 0)// default : 8?
                 .listStyle(GroupedListStyle())//remove padding of the entire list
+                Spacer()
+                
+                    Text(getVisibleIndeeex()?.value ?? "novalue")
             }
         }
         //.edgesIgnoringSafeArea(.horizontal)
@@ -118,6 +103,13 @@ sdjhfkjh
        
         
       
+        
+    }
+    func getVisibleIndeeex( ) -> Itemm? {
+       let s = visibleList.sorted(by: { item1, item2 in
+            item1.id < item2.id
+        })
+        return s.first
         
     }
 }

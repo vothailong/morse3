@@ -7,12 +7,14 @@ struct KeyBoardListView: View {
     @ObservedObject var sot: ClipboardSOT
     weak var delegate: MorseKeyboardViewDelegate?
     @State private var previousIndex : Int? = nil
+    @State var visibleRows: Set<String> = []
+
     var body: some View {
         
         ScrollViewReader { proxy in
             VStack {
                 if sot.clipItems?.count ?? 0 > 0 {
-                    GeneralList(verticalSpacing: 1) {
+                   List {
                         ForEach(sot.clipItems!)  { item in
                             HStack {
                                 Text(item.content).onTapGesture {
@@ -28,6 +30,7 @@ struct KeyBoardListView: View {
                             .lineLimit(4)
                             .removeSeparator()
                         }
+
                         .onDelete { offsets in
                             //  sot.clipItems?.remove(atOffsets: offsets)
                             //    self.previousIndex = offsets.first

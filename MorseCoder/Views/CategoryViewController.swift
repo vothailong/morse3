@@ -79,6 +79,16 @@ class CategoryViewController {
         
     }
     
+    func removeItemFromCategory(item: Item, cat: Category) {
+        do {
+            try realm.write{
+                realm.delete(item)
+            }
+        } catch {
+            print("Error deleting item, \(error)")
+        }
+    }
+    
     func getDefaultCategory () -> Category? {
         return loadCategories()?.first
     }

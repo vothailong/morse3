@@ -29,15 +29,15 @@
 import SwiftUI
 import RealmSwift
 
- 
+
 class ClipboardSOT: ObservableObject {
     var lastpasteboardString: String?
     @Published var clipItems: Results<Item>?
     @Published var selectedCategory: Category?
-    var controller : CategoryViewController
+    var categoryService : CategoryViewController
     init(controller: CategoryViewController) {
-        self.controller = controller
-    
+        self.categoryService = controller
+        
         if let cats = controller.loadCategories(){
             selectedCategory = cats.first
             if let selectedCategory = selectedCategory, selectedCategory.items.count > 0 {
@@ -50,27 +50,31 @@ class ClipboardSOT: ObservableObject {
         NotificationCenter.default.addObserver(self, selector: #selector(addClipboardItemToDB),
                                                name: NSNotification.Name.UIPasteboardChanged , object: nil)
         addClipboardItemToDB()
-
+        
         if #available(iOS 14.0, *) {
-               // iOS 14 doesn't have extra separators below the list by default.
-           } else {
-               // To remove only extra separators below the list:
-               UITableView.appearance().tableFooterView = UIView()
-           }
-
-           // To remove all separators including the actual ones:
-           UITableView.appearance().separatorStyle = .none
-
+            // iOS 14 doesn't have extra separators below the list by default.
+        } else {
+            // To remove only extra separators below the list:
+            UITableView.appearance().tableFooterView = UIView()
+        }
+        
+        // To remove all separators including the actual ones:
+        UITableView.appearance().separatorStyle = .none
+        
     }
     
     
-//    @objc  func clipboardChanged(){
-//        let pasteboardString: String? = UIPasteboard.general.string
-//        if let theString = pasteboardString {
-//            print("String is \(theString)")
-//            // Put the string into your search bar and do the search
-//        }
-//    }
+    //    @objc  func clipboardChanged(){
+    //        let pasteboardString: String? = UIPasteboard.general.string
+    //        if let theString = pasteboardString {
+    //            print("String is \(theString)")
+    //            // Put the string into your search bar and do the search
+    //        }
+    //    }
+    func removeItemFromDB(item: Item) {
+        categoryService.removeItemFromCategory(item: item, cat: selectedCategory!)
+        
+    }
     @objc func addClipboardItemToDB() {
         let pasteboardString: String? = UIPasteboard.general.string
         guard let   theString = pasteboardString, let selectedCategory = selectedCategory else { return  }
@@ -86,8 +90,8 @@ class ClipboardSOT: ObservableObject {
             let newItem = Item()
             newItem.content = theString
             newItem.dateCreated = Date()
-            controller.addItemToCategory(item: newItem, cat: selectedCategory)
-        //    clipItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: false)
+            categoryService.addItemToCategory(item: newItem, cat: selectedCategory)
+            //    clipItems = selectedCategory.items.sorted(byKeyPath: "dateCreated", ascending: false)//no need, because of LIVE updating in Realm
             loadItems()
         }
         
@@ -107,47 +111,50 @@ class ClipboardSOT: ObservableObject {
 struct KeyBoardListView: View {
     @ObservedObject var sot: ClipboardSOT
     weak var delegate: MorseKeyboardViewDelegate?
+    @State private var previousIndex : Int? = nil
     var body: some View {
         
         ScrollViewReader { proxy in
             VStack {
-                Button("Jump to #50") {
-                    proxy.scrollTo(2, anchor: .top)
-                }
-                VStack {
-                    if sot.clipItems?.count ?? 0 > 0 {
-                        GeneralList(verticalSpacing: 1) {
-                            ForEach(sot.clipItems!)  { item in
-                                HStack {
-                                    Text(item.content).onTapGesture {
-                                        delegate?.insertString(item.content)
-                                    }
-                                    
-                                    Spacer()
+                if sot.clipItems?.count ?? 0 > 0 {
+                    GeneralList(verticalSpacing: 1) {
+                        ForEach(sot.clipItems!)  { item in
+                            HStack {
+                                Text(item.content).onTapGesture {
+                                    delegate?.insertString(item.content)
                                 }
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 4)
-                                .border(Color.gray, width: 1)
-                                .font(.footnote)
-                                .lineLimit(4)
-                                .removeSeparator()
                                 
-                            }  .listRowInsets( EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4) )//default: 8 ?
+                                Spacer()
+                            }
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 4)
+                            .border(Color.gray, width: 1)
+                            .font(.footnote)
+                            .lineLimit(4)
+                            .removeSeparator()
                         }
-                        .environment(\.defaultMinListRowHeight, 0)// default : 8?
-                        .listStyle(GroupedListStyle())//remove padding of the entire list
-                    } else {
-                        List {
-                            Text("no item yet")
+                        .onDelete { offsets in
+                            //  sot.clipItems?.remove(atOffsets: offsets)
+                            //    self.previousIndex = offsets.first
+                            // print("previous=\(String(describing: previousIndex))")
+                            if let index = offsets.first , let item =  sot.clipItems?[index] {
+                                sot.removeItemFromDB(item: item)
+                            }
                         }
                     }
+                    .onChange(of: previousIndex) { (e: Equatable) in
+                        //  proxy.scrollTo(previousIndex!+2, anchor: .top)
+                        //                        proxy.scrollTo(3, anchor: .top) // will display 1st cell
+                    }
+                    .listRowInsets( EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4) )//default: 8 ?
+                    
+                    .environment(\.defaultMinListRowHeight, 0)// default : 8?
+                    .listStyle(GroupedListStyle())//remove padding of the entire list
+                } else {
+                    List {
+                        Text("no item yet")
+                    }
                 }
-                
-                List(0..<100, id: \.self) { i in
-                                   Text("Example \(i)")
-                                   .id(i)
-                               }
-           
             }
         }
         //.edgesIgnoringSafeArea(.horizontal)
@@ -158,13 +165,13 @@ struct KeyBoardListView: View {
             
             //UITableViewCell.appearance().selectionStyle = .none
         }
-       
-       
         
-      
+        
+        
+        
         
     }
- 
+    
     
 }
 

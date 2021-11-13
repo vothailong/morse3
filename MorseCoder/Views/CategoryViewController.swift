@@ -28,10 +28,20 @@ class CategoryViewController {
             .containerURL(forSecurityApplicationGroupIdentifier: "group.screencastomatic.com")!
             .appendingPathComponent("default.realm")
         print("path realm====== \(String(describing: fileURL))")
+     
+        do {
+            //delete file to migrate realm
+            //try   FileManager.default.removeItem(at: fileURL)
+        } catch   {
+            
+        }
+        
+       
         let config = Realm.Configuration(fileURL: fileURL)
         do {
     //        realm = try! Realm(configuration: config)
             realm = try Realm(configuration: config)
+            
         } catch {
             Log.error("Error initialising new realm, \(error)")
         }

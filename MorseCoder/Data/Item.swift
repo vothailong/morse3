@@ -13,6 +13,6 @@ class Item: Object, Identifiable {
     let id = UUID()
     @objc dynamic var content: String = ""
     @objc dynamic var pin: Bool = false
-    @objc dynamic var dateCreated: Date?
+    @objc dynamic var dateCreated = Date()
     var parentCategory = LinkingObjects(fromType: Category.self, property: "items")
 }

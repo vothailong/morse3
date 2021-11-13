@@ -7,7 +7,7 @@ struct KeyBoardListView: View {
     @ObservedObject var sot: ClipboardSOT
     weak var delegate: MorseKeyboardViewDelegate?
     @State private var previousIndex : Int? = nil
-    @State var visibleRows: Set<String> = []
+    @State var visibleRows: Set<Date> = []
 
     var body: some View {
         
@@ -29,6 +29,12 @@ struct KeyBoardListView: View {
                             .font(.footnote)
                             .lineLimit(4)
                             .removeSeparator()
+                            .onAppear {
+                                self.visibleRows.insert(item.dateCreated)
+                            }
+                            .onDisappear {
+                                self.visibleRows.remove(item.dateCreated)
+                            }
                         }
 
                         .onDelete { offsets in
@@ -44,7 +50,17 @@ struct KeyBoardListView: View {
 //                            //                        proxy.scrollTo(3, anchor: .top) // will display 1st cell
 //                        }
                     }
-                    
+                   .onAppear(perform: {
+                       let lastTimeItem = sot.clipItems?.first(where: { item in
+                           item.dateCreated == K.lastTimeClipboardItem
+                       })
+                       if let id = lastTimeItem?.id {
+                           proxy.scrollTo(id, anchor: .top)
+                       }
+                   })
+                   .onDisappear(perform: {
+                       K.lastTimeClipboardItem = getFirstVisible()
+                   })
                     .listRowInsets( EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4) )//default: 8 ?
                     
                     .environment(\.defaultMinListRowHeight, 0)// default : 8?
@@ -71,7 +87,13 @@ struct KeyBoardListView: View {
         
     }
     
-    
+    func getFirstVisible( ) -> Date? {
+       let s = visibleRows.sorted(by: { item1, item2 in
+            item1 < item2
+        })
+        return s.first
+        
+    }
 }
 
 struct RowSeparatorModifier: ViewModifier {

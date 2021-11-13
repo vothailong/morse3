@@ -12,6 +12,8 @@ struct K {
     
     static let userDefault: UserDefaults = UserDefaults.standard
     
+    static let lastTimeClipboardItemKey           = "lastTimeClipboardItem"
+    
 //   static let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
     static let screenSize: CGSize = UIScreen.main.bounds.size
@@ -130,7 +132,16 @@ struct K {
         }
     }
     
-    
+    static var lastTimeClipboardItem: Date? {
+        set {
+            K.userDefault.set(newValue, forKey: K.lastTimeClipboardItemKey)
+        }
+        get {
+            let date = UserDefaults.standard.object(forKey: K.lastTimeClipboardItemKey) as? Date
+            
+            return date
+        }
+    }
      
     
     static var deviceLanguage: K.Language {
@@ -165,6 +176,7 @@ struct K {
 
     static let dateFormatShareEmail  = "h:mm a, dd MMM, yyyy"
     
+   
     
     static let defaultImageCompression: CGFloat = 0.25 // 1.0 represents the least compression (or best quality).
     

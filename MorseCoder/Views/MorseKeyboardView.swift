@@ -30,6 +30,7 @@ class MorseKeyboardView: UIView {
         setNextKeyboardVisible(false)
     }
     
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -38,6 +39,25 @@ class MorseKeyboardView: UIView {
         super.awakeFromNib()
         setColorScheme(.light)
         setNextKeyboardVisible(false)
+        
+        let desiredHeight:CGFloat! = 459
+//          if UIDevice.currentDevice().userInterfaceIdiom == .Phone{
+//                  desiredHeight = 459
+//          }else{
+//              if UIDevice.currentDevice().orientation == .Portrait{
+//                  desiredHeight = 260
+//              }else {
+//                  desiredHeight = 300
+//              }
+//          }
+//          let heightConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: desiredHeight)
+//
+//        addConstraint(heightConstraint)
+        
+        let heightConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: desiredHeight)
+        addConstraints([  heightConstraint])
+
+        
     }
     
     func setNextKeyboardVisible(_ visible: Bool) {
